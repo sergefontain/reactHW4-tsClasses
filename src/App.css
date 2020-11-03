@@ -1,38 +1,183 @@
-.App {
-  text-align: center;
+* {
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+ul,
+h1,
+h2,
+h3,
+h4,
+hr,
+p {
+    margin: 0;
+    padding: 0;
 }
 
-.App-link {
-  color: #61dafb;
+ul > li {
+    list-style-type: none;
+}
+#wrapper {
+    font-family: "Times New Roman", Times, serif;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#main {
+    flex-grow: 1;
+    margin-top: 15%;
+}
+
+#iconButton {
+    opacity: 0;
+    position: absolute;
+}
+#iconButton:checked ~ label div {
+    width: 100px;
+    height: 100px;
+    background: url(./components/Timer/icon-stop2.png) no-repeat 50% 50%;
+    background-size: 100%;
+    animation: 0.1s iconButtonPress;
+}
+
+#iconButton ~ label div {
+    width: 100px;
+    height: 100px;
+    background: url(./components/Timer/icon-start.png) no-repeat 50% 50%;
+    background-size: 100%;
+    animation: 0.1s iconButtonPress2;
+}
+#iconButton ~ label {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+#iconButton:checked ~ #timer_container p {
+    animation: 5s fontResizing;
+    font-size: 56px;
+    opacity: 100%;
+}
+
+#main .container {
+    width: 500px;
+    border-radius: 150px;
+    border: 1px solid lightgrey;
+    border-top-color: white;
+    border-right-color: white;
+    border-left-color: white;
+    padding: 20px 20px;
+    height: 175px;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: rgb(176, 183, 190);
+    box-shadow: inset 0px 10px 15px 0px rgb(230, 233, 236);
+}
+
+#timer_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 20px;
+}
+#timer_container p {
+    display: flex;
+    flex-direction: row;
+}
+#timer_container p :nth-child(1) {
+    background: -webkit-linear-gradient(0deg, blue, darkviolet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#timer_container p :nth-child(2) {
+    background: -webkit-linear-gradient(0deg, darkviolet, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+#timer_container p :nth-child(3) {
+    background: -webkit-linear-gradient(0deg, red, darkorange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#elips {
+    width: 150px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: inset 1px -3px 4px 0px rgb(197, 201, 206);
+    animation: 5s shadowAppearing;
+    opacity: 100%;
+    transform: scale(1, 1);
+    background: -webkit-linear-gradient(0deg, blue, darkorange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes iconButtonPress {
+    from {
+        background-size: 100%;
+    }
+    to {
+        background-size: 100%;
+    }
+    50% {
+        background-size: 90%;
+    }
+}
+
+@keyframes iconButtonPress2 {
+    from {
+        background-size: 100%;
+    }
+    to {
+        background-size: 100%;
+    }
+    50% {
+        background-size: 90%;
+    }
+}
+
+@keyframes fontResizing {
+    from {
+        font-size: 24px;
+        opacity: 5%;
+    }
+    to {
+        font-size: 56px;
+        opacity: 100%;
+    }
+}
+
+@keyframes shadowAppearing {
+    from {
+        opacity: 5%;
+        transform: scale(0, -1);
+    }
+    to {
+        opacity: 100%;
+        transform: scale(1, 1);
+    }
 }

@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import "./App.css"
+import Timer from "./components/Timer"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [isShow, setIsShow] = React.useState(false)
+    return (
+        <div id="wrapper">
+            <header id="header"></header>
+            <main id="main">
+                <div className="container">
+                    <input
+                        onClick={() => setIsShow(!isShow)}
+                        type="checkbox"
+                        id="iconButton"
+                    />
+                    <label htmlFor="iconButton">
+                        <div></div>
+                    </label>
+                    {isShow && <Timer />}
+                </div>
+            </main>
+            <footer id="footer"></footer>
+        </div>
+    )
 }
 
-export default App;
+export default App
