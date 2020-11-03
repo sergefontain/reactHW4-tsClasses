@@ -74,7 +74,7 @@ ul > li {
 #iconButton:checked ~ #timer_container p {
     animation: 5s fontResizing;
     font-size: 56px;
-    opacity: 100%;
+    opacity: 1;
 }
 
 #main .container {
@@ -111,16 +111,22 @@ ul > li {
     background: -webkit-linear-gradient(0deg, blue, darkviolet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 #timer_container p :nth-child(2) {
     background: -webkit-linear-gradient(0deg, darkviolet, red);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 #timer_container p :nth-child(3) {
     background: -webkit-linear-gradient(0deg, red, darkorange);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 
 #elips {
@@ -129,11 +135,13 @@ ul > li {
     border-radius: 50%;
     box-shadow: inset 1px -3px 4px 0px rgb(197, 201, 206);
     animation: 5s shadowAppearing;
-    opacity: 100%;
+    opacity: 1;
     transform: scale(1, 1);
     background: -webkit-linear-gradient(0deg, blue, darkorange);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 
 @keyframes iconButtonPress {
@@ -163,21 +171,21 @@ ul > li {
 @keyframes fontResizing {
     from {
         font-size: 24px;
-        opacity: 5%;
+        opacity: .05;
     }
     to {
         font-size: 56px;
-        opacity: 100%;
+        opacity: 1;
     }
 }
 
 @keyframes shadowAppearing {
     from {
-        opacity: 5%;
+        opacity: .05;
         transform: scale(0, -1);
     }
     to {
-        opacity: 100%;
+        opacity: 1;
         transform: scale(1, 1);
     }
 }
