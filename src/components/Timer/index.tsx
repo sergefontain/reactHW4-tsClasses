@@ -5,8 +5,7 @@ interface State {
     countSec: string
     countMs: string
 }
-interface Props {
-}
+interface Props {}
 
 export default class Timer extends React.Component<Props, State> {
     public state: State = {
@@ -18,38 +17,29 @@ export default class Timer extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props)
-        console.log(`constructor вызывается в самом начале создания
-        создания компонента, чтобы инициализировать его начальные
-        параметры - props, путем запроса super() к родительскому элементу,
-        создавшего сам компонент.
+        console.log(`constructor вызывается в самом начале создания компонента, чтобы инициализировать его начальные параметры - props, путем запроса super() к родительскому элементу, создавшего сам компонент.
         `)
     }
 
     componentDidMount() {
-        console.log(`componentDidMount завершает процесс рождения
-        компонента. В нем устанавливаются все слушатели событий.`)
+        console.log(`componentDidMount завершает процесс рождения компонента. В нем устанавливаются все обработчики событий, интервалы.`)
         this.interval = setInterval(() => this.handleMSeconds(), 10)
     }
-    shouldComponentUpdate() {
-        console.log(`shouldComponentUpdate должен возвратить правду
-        или ложь, на основании данных слушателей событий, после чего
-        запускается или не запускается перерендер и метод апдейта
-        компонента.
+    shouldComponentUpdate(nextProps: {}, nextState: State) {
+        console.log(`shouldComponentUpdate должен возвратить правду или ложь на основании новых значений, установленных методом setState. Если пропсы и состояния не изменились, то возвращается false и перерендер компонента не запускается. Если наоборот, то возвращается true и происходит перерендер для отображения изменений.
         `)
         return true
     }
     componentDidUpdate(prevProps: {}, prevState: State) {
-        console.log(`componentDidUpdate завершает процесс апдейта.
-        Не вызывается при первом рендере. Не вызывается, если
-        shouldComponentUpdate() возвращает false. На основании сравнения
-        предыдущих параметров пропсов и состояния, и новых параметров,
-        происходит установка новых параметров, если они изменились.
-        `)
+        console.log(`componentDidUpdate завершает процесс апдейта. Не вызывается при первом рендере. Не вызывается, если shouldComponentUpdate() возвращает false. На основании сравнения предыдущих параметров пропсов и состояния, и новых параметров, происходит установка новых параметров, если они изменились.`)
+        if (this.state !== prevState) {
+            console.log(
+                `в сomponentDidUpdate происходит сравнение (prevProps + prevState) && (this.props + this.state) и если они отличаются, то происходит запуск shouldComponentUpdate снова`
+            )
+        }
     }
     componentWillUnmount() {
-        console.log(`componentWillUnmount удаляет компонент из DOM.
-        Здесь же удаляются все установленные слушатели событий.
-        `)
+        console.log(`componentWillUnmount удаляет компонент из DOM. Здесь же удаляются все установленные слушатели событий.`)
         clearInterval(this.interval)
     }
 
@@ -93,9 +83,7 @@ export default class Timer extends React.Component<Props, State> {
     }
 
     render(this: any) {
-        console.log(`render вызывается на этапе начальной отрисовки
-        компонента в DOM, и на этапе его апдейта.
-        `)
+        console.log(`render вызывается на этапе начальной отрисовки компонента в DOM, и на этапе его апдейта.`)
         return (
             <div id="timer_container">
                 <p>
